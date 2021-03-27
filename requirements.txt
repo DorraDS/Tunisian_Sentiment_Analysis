@@ -1,6 +1,5 @@
 numpy>=1.19.5
 pandas>=0.19
 Flask>=1.1.2
-pickle>=1.0
 tensorflow>=2.3.0
 gunicorn==20.1.0
