@@ -33,9 +33,9 @@ def home():
 @app.route('/predict',methods=['POST'])
 def predict():
 
-     model = load_model('D:/JN/competition/Zindi/AI4D_iCompass_Social_Media_Sentiment_Analysis_for_Tunisian_Arabizi/weights.hdf5')
+     model = load_model('weights.hdf5')
 # loading
-     with open('D:/JN/competition/Zindi/AI4D_iCompass_Social_Media_Sentiment_Analysis_for_Tunisian_Arabizi/tokenizer.pickle', 'rb') as handle:
+     with open('tokenizer.pickle', 'rb') as handle:
          tokenizer = pickle.load(handle)
 #convert tokens to indices
      def tokenize_tweets(text):
