@@ -45,6 +45,7 @@ def predict():
            return tokenizer.convert_tokens_to_ids(['[CLS]'] + text + ['[SEP]'])
 
      if (request.method == 'POST'):
+		return (render_template('result.html',prediction = 1))
          message = request.form['message']
 #	  	 data = [message]
          data = message
