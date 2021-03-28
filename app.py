@@ -33,9 +33,8 @@ app = Flask(__name__,template_folder='templates')
 def home():
 	return render_template('home.html')
 
-@app.route('/predict',methods=['POST', 'GET'])
+@app.route('/predict',methods=['POST'])
 def predict():
-
      model = load_model('weights.hdf5')
 # loading
      with open('tokenizer.pickle', 'rb') as handle:
@@ -43,11 +42,8 @@ def predict():
 #convert tokens to indices
      def tokenize_tweets(text):
            return tokenizer.convert_tokens_to_ids(['[CLS]'] + text + ['[SEP]'])
-
      if (request.method == 'POST'):
-		return (render_template('result.html',prediction = 1))
          message = request.form['message']
-#	  	 data = [message]
          data = message
          # supprimer les caractères répétitifs dans un mot
          tweet=re.sub(r'(.)\1+', r'\1', data)
@@ -55,7 +51,6 @@ def predict():
          tokenized_tweet= tokenizer.tokenize(tweet)
          encoded_tweet = [tokenize_tweets(tokenized_tweet)]
          padded_tweet = pad_sequences(encoded_tweet, maxlen=4000, padding='post', truncating='post')
-
          #make prediction
          my_prediction= model.predict(padded_tweet)
          pred_final = np.argmax(my_prediction,axis=1)
