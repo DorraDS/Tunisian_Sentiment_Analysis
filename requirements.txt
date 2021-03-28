@@ -6,6 +6,6 @@ gunicorn==20.1.0
 itsdangerous==1.1.0
 keras==2.3.1
 h5py==2.10.0
-pickle>=1.0
+
 
 
