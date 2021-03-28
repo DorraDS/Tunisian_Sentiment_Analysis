@@ -33,7 +33,7 @@ app = Flask(__name__,template_folder='templates')
 def home():
 	return render_template('home.html')
 
-@app.route('/predict',methods=['POST'])
+@app.route('/predict',methods=['POST', 'GET'])
 def predict():
 
      model = load_model('weights.hdf5')
@@ -44,7 +44,7 @@ def predict():
      def tokenize_tweets(text):
            return tokenizer.convert_tokens_to_ids(['[CLS]'] + text + ['[SEP]'])
 
-     if (request.method == ['POST', 'GET']):
+     if (request.method == 'POST'):
          message = request.form['message']
 #	  	 data = [message]
          data = message
