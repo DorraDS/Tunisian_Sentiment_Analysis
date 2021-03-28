@@ -44,7 +44,7 @@ def predict():
      def tokenize_tweets(text):
            return tokenizer.convert_tokens_to_ids(['[CLS]'] + text + ['[SEP]'])
 
-     if (request.method == 'POST'):
+     if (request.method == ['POST', 'GET']):
          message = request.form['message']
 #	  	 data = [message]
          data = message
