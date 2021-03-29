@@ -37,11 +37,12 @@ def home():
 @app.route('/predict',methods=['POST'])
 def predict():
 	#return (render_template('result.html',prediction = 1))
-        model = load_model('weights.hdf5')
-	return (render_template('result.html',prediction = 1))
+        #model = load_model('weights.hdf5')
+	#return (render_template('result.html',prediction = 1))
 ##loading
-        #with open('tokenizer.pickle', 'rb') as handle:
+        with open('tokenizer.pickle', 'rb') as handle:
 		#tokenizer = pickle.load(handle)
+	return (render_template('result.html',prediction = 1))
 #"convert tokens to indices
         #def tokenize_tweets(text):
 		#return tokenizer.convert_tokens_to_ids(['[CLS]'] + text + ['[SEP]'])
