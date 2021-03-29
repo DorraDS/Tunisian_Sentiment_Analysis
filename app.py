@@ -36,7 +36,9 @@ def home():
 @app.route('/predict',methods=['POST'])
 def predict():
 	#return (render_template('result.html',prediction = 1))
+	console.log("1")
         model = load_model('weights.hdf5')
+	console.log("2")
 # loading
         with open('tokenizer.pickle', 'rb') as handle:
 		tokenizer = pickle.load(handle)
