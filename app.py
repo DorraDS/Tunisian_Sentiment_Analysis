@@ -40,12 +40,13 @@ def predict():
         #model = load_model('weights.hdf5')
 	#return (render_template('result.html',prediction = 1))
 ##loading
-        with open('tokenizer.pickle', 'rb') as handle:
+        #with open('tokenizer.pickle', 'rb') as handle:
 		#tokenizer = pickle.load(handle)
-	return (render_template('result.html',prediction = 1))
+	#return (render_template('result.html',prediction = 1))
 #"convert tokens to indices
-        #def tokenize_tweets(text):
-		#return tokenizer.convert_tokens_to_ids(['[CLS]'] + text + ['[SEP]'])
+        def tokenize_tweets(text):
+		return tokenizer.convert_tokens_to_ids(['[CLS]'] + text + ['[SEP]'])
+	return (render_template('result.html',prediction = 1))
         #if (request.method == 'POST'):
 		#message = request.form['message']
 		#data = message
