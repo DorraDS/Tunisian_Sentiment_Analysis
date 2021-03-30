@@ -38,25 +38,26 @@ def home():
 def predict():
 	#return (render_template('result.html',prediction = 1))
         #model = load_model('weights.hdf5')
-	model = load_model("weights.h5")
-	return (render_template('result.html',prediction = 1))
+	#model = load_model("weights.h5")
+	#return (render_template('result.html',prediction = 1))
 ##loading
-        #with open('tokenizer.pickle', 'rb') as handle:
-		#tokenizer = pickle.load(handle)
+        with open('tokenizer.pickle', 'rb') as handle:
+		tokenizer = pickle.load(handle)
 	#return (render_template('result.html',prediction = 1))
 #"convert tokens to indices
-        #def tokenize_tweets(text):
-		#return tokenizer.convert_tokens_to_ids(['[CLS]'] + text + ['[SEP]'])
+        def tokenize_tweets(text):
+		return tokenizer.convert_tokens_to_ids(['[CLS]'] + text + ['[SEP]'])
 	#return (render_template('result.html',prediction = 1))
-        #if (request.method == 'POST'):
-		#message = request.form['message']
-		#data = message
+        if (request.method == 'POST'):
+		message = request.form['message']
+		data = message
                 ## supprimer les caractères répétitifs dans un mot
-                #tweet=re.sub(r'(.)\1+', r'\1', data)
+                tweet=re.sub(r'(.)\1+', r'\1', data)
                 ## convert words to tokens
-                #tokenized_tweet= tokenizer.tokenize(tweet)
-                #encoded_tweet = [tokenize_tweets(tokenized_tweet)]
-                #padded_tweet = pad_sequences(encoded_tweet, maxlen=4000, padding='post', truncating='post')
+                tokenized_tweet= tokenizer.tokenize(tweet)
+                encoded_tweet = [tokenize_tweets(tokenized_tweet)]
+                padded_tweet = pad_sequences(encoded_tweet, maxlen=4000, padding='post', truncating='post')
+		return (render_template('result.html',prediction = 1))
                 ##make prediction
                 #my_prediction= model.predict(padded_tweet)
                 #pred_final = np.argmax(my_prediction,axis=1)
