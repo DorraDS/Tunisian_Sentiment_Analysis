@@ -38,7 +38,7 @@ def home():
 def predict():
 	#return (render_template('result.html',prediction = 1))
         #model = load_model('weights.hdf5')
-	model = load_model('weights.h5')
+	model = load_model("weights.h5")
 	return (render_template('result.html',prediction = 1))
 ##loading
         #with open('tokenizer.pickle', 'rb') as handle:
